@@ -17,6 +17,8 @@ module.exports = grammar({
       $.model_stmt,
       $.foreign_stmt,
       $.test_block,
+      $.opaque_stmt,
+      $.unsafe_stmt,
       $.expression
     ),
 
@@ -57,7 +59,7 @@ module.exports = grammar({
       "def",
       field("name", $.identifier),
       optional(seq("(", commaSep($.identifier), ")")),
-      optional(seq(":", $.type_identifier)),
+      optional(seq(":", $.type_expression)),
       $.block
     ),
 
@@ -79,17 +81,39 @@ module.exports = grammar({
       $.block
     ),
 
+    opaque_stmt: $ => seq(
+      "opaque",
+      $.block
+    ),
+
+    unsafe_stmt: $ => seq(
+      "unsafe",
+      $.block
+    ),
+
     block: $ => seq(
       "{",
       repeat($._statement),
       "}"
     ),
 
+    type_expression: $ => choice(
+      $.type_identifier,
+      seq("list", "(", $.type_expression, ")")
+    ),
+
     expression: $ => choice(
       $.identifier,
       $.number,
-      $.string
-    )
+      $.string,
+      $.mut_expr,
+      $.val_expr,
+      $.extern_expr
+    ),
+
+    mut_expr: $ => seq("mut", $.identifier),
+    val_expr: $ => seq("val", $.identifier),
+    extern_expr: $ => seq("extern", $.identifier)
   }
 });
 

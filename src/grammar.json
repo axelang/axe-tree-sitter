@@ -42,6 +42,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "opaque_stmt"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unsafe_stmt"
+        },
+        {
+          "type": "SYMBOL",
           "name": "expression"
         }
       ]
@@ -295,7 +303,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "type_identifier"
+                  "name": "type_expression"
                 }
               ]
             },
@@ -385,6 +393,32 @@
         }
       ]
     },
+    "opaque_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "opaque"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "unsafe_stmt": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "unsafe"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
     "block": {
       "type": "SEQ",
       "members": [
@@ -405,6 +439,36 @@
         }
       ]
     },
+    "type_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "type_identifier"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "list"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "type_expression"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
@@ -419,6 +483,57 @@
         {
           "type": "SYMBOL",
           "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mut_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "val_expr"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "extern_expr"
+        }
+      ]
+    },
+    "mut_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "mut"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "val_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "val"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    },
+    "extern_expr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "extern"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         }
       ]
     }

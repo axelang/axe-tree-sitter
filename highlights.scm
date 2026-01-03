@@ -6,6 +6,11 @@
 ((foreign_stmt) @keyword)
 ((platform_block) @keyword)
 ((test_block) @keyword)
+((opaque_stmt) @keyword)
+((unsafe_stmt) @keyword)
+((mut_expr) @keyword)
+((val_expr) @keyword)
+((extern_expr) @keyword)
 
 ;; Comments
 ((comment) @comment)
@@ -24,5 +29,9 @@
 ((def_stmt
   name: (identifier) @function))
 
-;; Blocks
+;; Blocks / brackets
 ((block) @punctuation.bracket)
+
+;; Type expressions
+((type_expression
+  (type_identifier) @type))
