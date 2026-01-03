@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Tree-sitter generated files (parsers, builds, etc.)
+build/
+tree-sitter-*.o
+tree-sitter-*.so
+tree-sitter-*.dylib
+tree-sitter-*.dll
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Optional: coverage & test artifacts
+coverage/
+*.test.js.snap
+
