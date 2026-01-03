@@ -351,6 +351,21 @@
     }
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "test_block",
     "named": true,
     "fields": {},
@@ -445,6 +460,14 @@
     }
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -480,6 +503,10 @@
   {
     "type": "def",
     "named": false
+  },
+  {
+    "type": "escape_sequence",
+    "named": true
   },
   {
     "type": "extern",
@@ -520,10 +547,6 @@
   {
     "type": "pub",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
   },
   {
     "type": "test",

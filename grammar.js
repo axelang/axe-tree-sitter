@@ -30,9 +30,37 @@ module.exports = grammar({
     identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
     type_identifier: $ => /[A-Z][a-zA-Z0-9_]*/,
+    
+    string: $ => choice(
+      seq(
+        '"',
+        repeat(choice(
+          $.escape_sequence,
+          token.immediate(/[^"\\\n]/)
+        )),
+        '"'
+      ),
+      seq(
+        "'",
+        repeat(choice(
+          $.escape_sequence,
+          token.immediate(/[^'\\\n]/)
+        )),
+        "'"
+      )
+    ),
 
-    string: $ => /"[^"]*"/,
-
+    escape_sequence: $ => token.immediate(
+      seq(
+        '\\',
+        choice(
+          /["'\\nrt]/,
+          /x[0-9a-fA-F]{2}/,
+          /u\{[0-9a-fA-F]+\}/
+        )
+      )
+    ),
+    
     number: $ => /\d+/,
 
     use_stmt: $ => seq(
