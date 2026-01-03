@@ -1,40 +1,71 @@
-;; Keywords
-((use_stmt) @keyword)
-((pub_stmt) @keyword)
-((def_stmt) @keyword)
-((model_stmt) @keyword)
-((foreign_stmt) @keyword)
-((platform_block) @keyword)
-((test_block) @keyword)
-((opaque_stmt) @keyword)
-((unsafe_stmt) @keyword)
-((mut_expr) @keyword)
-((val_expr) @keyword)
-((extern_expr) @keyword)
+[
+  "use"
+  "pub"
+  "def"
+  "model"
+  "enum"
+  "foreign"
+  "platform"
+  "test"
+  "opaque"
+  "unsafe"
+  "overload"
+  "if"
+  "elif"
+  "else"
+  "loop"
+  "for"
+  "parallel"
+  "single"
+  "return"
+  "break"
+  "mut"
+  "val"
+  "extern"
+] @keyword
 
-;; Comments
-((comment) @comment)
+[
+  "and"
+  "or"
+] @operator
 
-;; Identifiers
-((identifier) @variable)
-((type_identifier) @type)
+(comment) @comment
+(identifier) @variable
+(type_identifier) @type
 
-;; Strings
-((string) @string)
+(def_stmt
+  name: (identifier) @function)
 
-;; Numbers
-((number) @number)
+(overload_stmt
+  name: (identifier) @function)
 
-;; Function names
-((def_stmt
-  name: (identifier) @function))
+(enum_stmt
+  name: (type_identifier) @type)
 
-;; Blocks / brackets
-((block) @punctuation.bracket)
+(enum_variant
+  (type_identifier) @constant)
 
-;; Type expressions
-((type_expression
-  (type_identifier) @type))
+(string) @string
+(number) @number
+(list_literal) @constant
 
-;; List literals
-((list_literal) @constant)
+(type_expression
+  (type_identifier) @type)
+
+[
+  "{"
+  "}"
+  "("
+  ")"
+  "["
+  "]"
+] @punctuation.bracket
+
+[
+  ","
+  ";"
+] @punctuation.delimiter
+
+[
+  ":"
+] @operator
