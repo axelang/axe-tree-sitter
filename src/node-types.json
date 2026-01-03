@@ -1,5 +1,20 @@
 [
   {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -8,15 +23,35 @@
       "required": false,
       "types": [
         {
+          "type": "break_stmt",
+          "named": true
+        },
+        {
           "type": "def_stmt",
           "named": true
         },
         {
-          "type": "expression",
+          "type": "enum_stmt",
+          "named": true
+        },
+        {
+          "type": "expression_stmt",
+          "named": true
+        },
+        {
+          "type": "for_stmt",
           "named": true
         },
         {
           "type": "foreign_stmt",
+          "named": true
+        },
+        {
+          "type": "if_stmt",
+          "named": true
+        },
+        {
+          "type": "loop_stmt",
           "named": true
         },
         {
@@ -28,11 +63,27 @@
           "named": true
         },
         {
+          "type": "overload_stmt",
+          "named": true
+        },
+        {
+          "type": "parallel_for_stmt",
+          "named": true
+        },
+        {
           "type": "platform_block",
           "named": true
         },
         {
           "type": "pub_stmt",
+          "named": true
+        },
+        {
+          "type": "return_stmt",
+          "named": true
+        },
+        {
+          "type": "single_stmt",
           "named": true
         },
         {
@@ -49,6 +100,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "break_stmt",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "def_stmt",
@@ -74,11 +130,93 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "parameter_list",
           "named": true
         },
         {
           "type": "type_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "elif_clause",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_stmt",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "enum_variant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_variant",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type_identifier",
           "named": true
         }
       ]
@@ -93,7 +231,7 @@
       "required": true,
       "types": [
         {
-          "type": "extern_expr",
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -105,10 +243,6 @@
           "named": true
         },
         {
-          "type": "mut_expr",
-          "named": true
-        },
-        {
           "type": "number",
           "named": true
         },
@@ -117,7 +251,22 @@
           "named": true
         },
         {
-          "type": "val_expr",
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -139,6 +288,21 @@
     }
   },
   {
+    "type": "for_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "foreign_stmt",
     "named": true,
     "fields": {},
@@ -154,6 +318,40 @@
     }
   },
   {
+    "type": "if_stmt",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "elif_clause",
+          "named": true
+        },
+        {
+          "type": "else_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "list_literal",
     "named": true,
     "fields": {},
@@ -163,6 +361,21 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "loop_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
           "named": true
         }
       ]
@@ -225,6 +438,85 @@
     }
   },
   {
+    "type": "overload_stmt",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parallel_for_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "platform_block",
     "named": true,
     "fields": {},
@@ -233,47 +525,11 @@
       "required": true,
       "types": [
         {
-          "type": "def_stmt",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "foreign_stmt",
+          "type": "block",
           "named": true
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "model_stmt",
-          "named": true
-        },
-        {
-          "type": "opaque_stmt",
-          "named": true
-        },
-        {
-          "type": "platform_block",
-          "named": true
-        },
-        {
-          "type": "pub_stmt",
-          "named": true
-        },
-        {
-          "type": "test_block",
-          "named": true
-        },
-        {
-          "type": "unsafe_stmt",
-          "named": true
-        },
-        {
-          "type": "use_stmt",
           "named": true
         }
       ]
@@ -292,7 +548,41 @@
           "named": true
         },
         {
+          "type": "enum_stmt",
+          "named": true
+        },
+        {
           "type": "model_stmt",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "return_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "single_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
           "named": true
         }
       ]
@@ -308,15 +598,35 @@
       "required": false,
       "types": [
         {
+          "type": "break_stmt",
+          "named": true
+        },
+        {
           "type": "def_stmt",
           "named": true
         },
         {
-          "type": "expression",
+          "type": "enum_stmt",
+          "named": true
+        },
+        {
+          "type": "expression_stmt",
+          "named": true
+        },
+        {
+          "type": "for_stmt",
           "named": true
         },
         {
           "type": "foreign_stmt",
+          "named": true
+        },
+        {
+          "type": "if_stmt",
+          "named": true
+        },
+        {
+          "type": "loop_stmt",
           "named": true
         },
         {
@@ -328,11 +638,27 @@
           "named": true
         },
         {
+          "type": "overload_stmt",
+          "named": true
+        },
+        {
+          "type": "parallel_for_stmt",
+          "named": true
+        },
+        {
           "type": "platform_block",
           "named": true
         },
         {
           "type": "pub_stmt",
+          "named": true
+        },
+        {
+          "type": "return_stmt",
+          "named": true
+        },
+        {
+          "type": "single_stmt",
           "named": true
         },
         {
@@ -394,6 +720,29 @@
         },
         {
           "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "extern_expr",
+          "named": true
+        },
+        {
+          "type": "mut_expr",
+          "named": true
+        },
+        {
+          "type": "val_expr",
           "named": true
         }
       ]
@@ -496,12 +845,32 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "break",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true,
     "extra": true
   },
   {
     "type": "def",
+    "named": false
+  },
+  {
+    "type": "elif",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "enum",
     "named": false
   },
   {
@@ -513,6 +882,10 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "foreign",
     "named": false
   },
@@ -521,7 +894,15 @@
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "list",
+    "named": false
+  },
+  {
+    "type": "loop",
     "named": false
   },
   {
@@ -541,11 +922,31 @@
     "named": false
   },
   {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "overload",
+    "named": false
+  },
+  {
+    "type": "parallel",
+    "named": false
+  },
+  {
     "type": "platform",
     "named": false
   },
   {
     "type": "pub",
+    "named": false
+  },
+  {
+    "type": "return",
+    "named": false
+  },
+  {
+    "type": "single",
     "named": false
   },
   {
