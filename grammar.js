@@ -108,12 +108,18 @@ module.exports = grammar({
       $.string,
       $.mut_expr,
       $.val_expr,
-      $.extern_expr
+      $.extern_expr,
+      $.list_literal
     ),
 
     mut_expr: $ => seq("mut", $.identifier),
     val_expr: $ => seq("val", $.identifier),
-    extern_expr: $ => seq("extern", $.identifier)
+    extern_expr: $ => seq("extern", $.identifier),
+    list_literal: $ => seq(
+      "[",
+      optional(commaSep($.expression)),
+      "]"
+    ),
   }
 });
 

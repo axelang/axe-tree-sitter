@@ -25,7 +25,7 @@
 ;; Numbers
 ((number) @number)
 
-;; Function names (from def_stmt)
+;; Function names
 ((def_stmt
   name: (identifier) @function))
 
@@ -35,3 +35,6 @@
 ;; Type expressions
 ((type_expression
   (type_identifier) @type))
+
+;; List literals
+((list_literal) @constant)

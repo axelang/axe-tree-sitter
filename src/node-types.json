@@ -101,6 +101,10 @@
           "named": true
         },
         {
+          "type": "list_literal",
+          "named": true
+        },
+        {
           "type": "mut_expr",
           "named": true
         },
@@ -144,6 +148,21 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -443,6 +462,14 @@
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
